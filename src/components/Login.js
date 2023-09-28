@@ -3,13 +3,12 @@ import Header from './Header'
 import { checkValidateData } from '../utils/validate';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../utils/firebase';
-import { useNavigate } from 'react-router-dom';
 import { updateProfile } from "firebase/auth";
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
+import { USER_AVTAR } from '../utils/constants';
 
 const Login = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isSignInForm, setisSignInForm] = useState(true);
   const [errorMesssage, seterrorMesssage] = useState(null);
@@ -22,8 +21,8 @@ const Login = () => {
   function handleButtonClick() {
     // checks email and pasword validation
 
-    console.log(email.current.value);
-    console.log(pass.current.value);
+    // console.log(email.current.value);
+    // console.log(pass.current.value);
 
     const message = checkValidateData(email.current.value, pass.current.value);
     seterrorMesssage(message);
@@ -36,31 +35,25 @@ const Login = () => {
 
     if (!isSignInForm) {
       // logic for signUp
-
       createUserWithEmailAndPassword(auth, email.current.value, pass.current.value)
         .then((userCredential) => {
-
           const user = userCredential.user;
-          console.log(user);
+          //console.log(user);
+
 
           // update profile
-
           updateProfile(user, {
-            displayName: fName.current.value, photoURL: "https://avatars.githubusercontent.com/u/22270538?v=4"
+            displayName: fName.current.value, photoURL: USER_AVTAR
           }).then(() => {
             // Profile updated!
-
             const { uid, email, displayName, photoURL } = auth.currentUser;
             dispatch(addUser({ uid: uid, email: email, displayName: displayName, photoURL: photoURL }));
 
-            navigate("/Browse");
           }).catch((error) => {
             // An error occurred
             seterrorMesssage(error.message);
           });
 
-
-          navigate("/Browse");
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -73,10 +66,9 @@ const Login = () => {
 
       signInWithEmailAndPassword(auth, email.current.value, pass.current.value)
         .then((userCredential) => {
-
           const user = userCredential.user;
-          console.log(user);
-          navigate("/Browse");
+          //  console.log(user);
+
         })
         .catch((error) => {
           const errorCode = error.code;
@@ -98,7 +90,8 @@ const Login = () => {
       <Header />
 
       <div className='absolute opacity-100'>
-        <img className='tranpa' src='https://assets.nflxext.com/ffe/siteui/vlv3/42df4e1f-bef6-499e-87ff-c990584de314/5e7c383c-1f88-4983-b4da-06e14c0984ba/IN-en-20230904-popsignuptwoweeks-perspective_alpha_website_medium.jpg'
+        <img className='tranpa'
+          src='https://assets.nflxext.com/ffe/siteui/vlv3/42df4e1f-bef6-499e-87ff-c990584de314/5e7c383c-1f88-4983-b4da-06e14c0984ba/IN-en-20230904-popsignuptwoweeks-perspective_alpha_website_medium.jpg'
           alt='back_ground' />
       </div>
 

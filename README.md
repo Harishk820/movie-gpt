@@ -17,6 +17,31 @@
   -Update profile
 
 - fetch movies from TMDB movies
+  --Bug Fixed
+  -sign Up display name and avtar
+  -if the user is not logged in redirect to /Browse to login page and vice versa
+  -Unsubscribed to onAuthStateChanged callback
+  -Created constants file(for hard coded values)
+  -Registered TMDB api, created app and got access token
+  -Got data from TMDB Now playing list API
+
+  -custom Hook for Now playing movies
+  -created movieSlice
+  -updated the store with movies data
+  -main container and secondary container
+  -custom Hook for trailer video
+  -update the store with trailer video Data
+  -Embeded the youTube and made it autoplay
+
+  # Browse Page
+
+  MainContainer
+  -VideoBackground
+  -Video Title
+
+  Secondary container
+  -movieList*n
+  -cards*n
 
 # features
 
