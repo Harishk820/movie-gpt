@@ -32,6 +32,11 @@
   -custom Hook for trailer video
   -update the store with trailer video Data
   -Embeded the youTube and made it autoplay
+  -Build secondary components
+  -Build the movieList
+  -Build the movieCard
+  -TMDB image CDN url
+  -created usePopularMovies Custom Hook(for popular movies)
 
   # Browse Page
 
