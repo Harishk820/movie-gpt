@@ -90,14 +90,14 @@ const Login = () => {
       <Header />
 
       <div className='absolute opacity-100'>
-        <img className=''
+        <img className='h-screen object-cover md:w-screen md:h-full'
           src={BG_URL}
           alt='back_ground' />
       </div>
 
 
       <form onSubmit={(e) => e.preventDefault()}
-        className='absolute my-32 mx-auto right-0 left-0 p-12 w-4/12 rounded-md bg-opacity-80 text-white bg-black'>
+        className='absolute w-[80%] md:w-4/12 my-20 md:my-24 mx-auto right-0 left-0 p-12  rounded-md bg-opacity-80 text-white bg-black'>
 
         <h3
           className='font-semibold text-3xl my-6 p-2 '>
@@ -114,7 +114,7 @@ const Login = () => {
           ref={email}
           className='p-3 my-2 w-full rounded-md bg-slate-900'
           type='text'
-          placeholder='Email or phone number'>
+          placeholder='Email '>
         </input>
 
         <input

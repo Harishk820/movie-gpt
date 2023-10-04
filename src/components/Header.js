@@ -53,22 +53,32 @@ const Header = () => {
   }, []);
 
   return (
-    <div className='flex justify-between absolute w-screen z-10 bg-gradient-to-b from-black'>
-      <img className='w-44 px-8 py-2' src={LOGO} alt='logo' />
-      {user &&
-        <div className='flex p-2'>
-          {showGptSearch && (<select className='p-2 m-2 mt-4 mx-4 text-white bg-gray-700 rounded-lg'
-            onClick={handleLanguageChange}>
-            {SUPPORTED_LANGUAGES.map(lang => <option key={lang.identifiers} value={lang.identifiers}>{lang.name}</option>)}
-          </select>)}
+    <div className='flex flex-col items-center absolute w-screen z-10 bg-gradient-to-b from-black md:justify-between md:flex-row'>
 
-          <button className='p-2 m-2 mt-4 mx-4 text-white bg-blue-300 rounded-lg'
+      <img className='w-44 px-8 py-2 mx-auto md:mx-0' src={LOGO} alt='logo' />
+
+      {user &&
+        <div className='flex   -mt-4 md:mt-0 md:p-2 '>
+
+          {showGptSearch &&
+            (
+              <select className='p-2 m-2 mt-4 mx-4 text-white bg-gray-700 rounded-lg'
+                onClick={handleLanguageChange}>
+                {SUPPORTED_LANGUAGES.map(lang => <option key={lang.identifiers} value={lang.identifiers}>{lang.name}</option>)}
+              </select>
+            )
+          }
+
+          <button className='p-2 m-2 mt-4 mx-4 text-white bg-gray-600 rounded-lg'
             onClick={handleGptSearchClick}>
             {showGptSearch ? "Home Page" : "GPT Search"}
           </button>
 
-          <img className='w-12 h-12 mt-3' src={user.photoURL} alt='userphoto' />
-          <button className='p-2 m-2 mt-4 mx-4 text-white rounded-md bg-gray-600' onClick={handleSignout}>Signout</button>
+          <img className='hidden md:inline-block w-12 h-12 mt-3' src={user.photoURL} alt='userphoto' />
+
+          <button className='px-4 py-1 m-2 mt-4 md:py-2 md:mx-4 text-white rounded-md bg-gray-600'
+            onClick={handleSignout}>Signout
+          </button>
         </div>
       }
 
