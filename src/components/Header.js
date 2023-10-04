@@ -4,9 +4,10 @@ import { auth } from '../utils/firebase';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
-import { LOGO, SUPPORTED_LANGUAGES } from '../utils/constants';
+import { SUPPORTED_LANGUAGES } from '../utils/constants';
 import { toggleGptSerchView } from '../utils/GPTslice';
 import { changeLanguage } from '../utils/configSlice';
+
 
 
 const Header = () => {
@@ -55,7 +56,7 @@ const Header = () => {
   return (
     <div className='flex flex-col items-center absolute w-screen z-10 bg-gradient-to-b from-black md:justify-between md:flex-row'>
 
-      <img className='w-44 px-8 py-2 mx-auto md:mx-0' src={LOGO} alt='logo' />
+      <img className='w-48 md:w-52 md:m-1 px-8 py-2 mx-auto md:mx-0' src="/Logo.png" alt='logo' />
 
       {user &&
         <div className='flex   -mt-4 md:mt-0 md:p-2 '>
